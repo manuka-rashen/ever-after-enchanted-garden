@@ -19,10 +19,6 @@ jobs:
         with:
           node-version: '24'
           cache: npm
-      - name: Repair optional dependency metadata
-        run: |
-          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
-          node -e "const l=require('./package-lock.json'); console.log('LOCK_REPAIR_JSON='+JSON.stringify(l.packages))"
       - run: npm ci
       - run: npm test
       - run: npm run build
